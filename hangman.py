@@ -51,16 +51,18 @@ def hangman(secret_word):
         user=input("enter game level for Easy (1) ,medeum (2) , hard(3) ")
         if user=="1":
             remaining_lives=8
+            count_wrong_input=0
             j+=1
         elif user=="2":
             remaining_lives=6
+            count_wrong_input=2
             j+=1
         elif user=="3":
+            count_wrong_input=4
             remaining_lives=4
             j+=1
         else:
             continue
-    count_wrong_input=0
     letters_guessed=[]
     count=0
     while remaining_lives>0:
@@ -92,13 +94,11 @@ def hangman(secret_word):
 
             print(IMAGES[count_wrong_input])
             remaining_lives-=1
-            print("remaining live ",remaining_lives)
+            print("remaining lives ",remaining_lives)
             count_wrong_input+=1
     if is_word_guessed(secret_word, letters_guessed)==False:
-        print("sorry you lives is over try again")
-            
-# Load the list of words into the variable wordlist
-# So that it can be accessed from anywhere in the program
+        print("sorry your lives is over")
+        print("*** game over please try again***")
 secret_word = choose_word()
 hangman(secret_word)
                                             
